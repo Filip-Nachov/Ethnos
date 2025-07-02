@@ -1,0 +1,10 @@
+ethnos
+*.o
+*~
+*.swp
+build/
+bin/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
