@@ -1,8 +1,9 @@
-CC = gcc
+CC = g++
 CFLAGS = -Wall -Wextra -std=c++20
 SRC = src
-SOURCES := $(wildcard $(SRC)/*.c)
-OBJECTS := $(patsubst $(SRC)/%.c,%.o,$(SOURCES))
+BUILD = build
+SOURCES := $(wildcard $(SRC)/*.cpp)
+OBJECTS := $(patsubst $(SRC)/%.cpp, $(BUILD)/%.o, $(SOURCES))
 
 TARGET = ethnos
 
@@ -11,8 +12,12 @@ all: $(TARGET)
 $(TARGET): $(OBJECTS)
 	$(CC) $(CFLAGS) -o $@ $^
 
-%.o: $(SRC_DIR)/%.c
+$(BUILD)/%.o: $(SRC)/%.cpp | $(BUILD)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
+$(BUILD):
+	mkdir -p $(BUILD)
+
 clean:
-	rm -f $(TARGET) $(OBJECTS)
+	rm -rf $(TARGET) $(BUILD)
+
