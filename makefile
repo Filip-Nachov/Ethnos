@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -std=c++20 -Wall -Werror -I./src/headers 
+CFLAGS = -std=c++20 -Wall -Werror ./src/headers 
 SRC = src 
 HEADERS = $(SRC)/headers 
 SOURCES = $(wildcard $(SRC)/*.cpp)
