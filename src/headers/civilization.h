@@ -2,13 +2,12 @@
 #include <string> 
 #include <format>
 #include <vector>
-
+#include <sstream>
 
 class Civilization {
 private:
     std::string name;
     std::vector<int> time = {0, 0, 0};
-    std::string fTime = std::format("time spent: {}s {}m {}h", time[0], time[1], time[2]);
     int population;
     int economy;
     double culture;
@@ -18,9 +17,11 @@ private:
 public:
     Civilization(const std::string& name, int population);
 
+    std::string getFormattedTime() const;
     void tick(Civilization& Civ);
     std::string getName(const Civilization& Civ);
     void setName(std::string name);
+    void printStats(const Civilization& Civ);
     int getPopulation(const Civilization& Civ);
     int setPopulation(int pop);
 };
