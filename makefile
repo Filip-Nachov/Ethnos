@@ -1,18 +1,18 @@
-CC = g++
-CFLAGS = -std=c++20 -Wall -Werror 
-SRC = src 
-HEADERS = $(SRC)/headers 
-SOURCES = $(wildcard $(SRC)/*.cpp)
-OBJECTS = $(SOURCES:.cpp=.o)
+CC = gcc
+CFLAGS = -Wall -Wextra -std=c++20
+SRC = src
+SOURCES := $(wildcard $(SRC)/*.c)
+OBJECTS := $(patsubst $(SRC)/%.c,%.o,$(SOURCES))
+
 TARGET = ethnos
 
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SOURCES)
+	$(CC) $(CFLAGS) -o $@ $^
 
-%.o: %.cpp $(HEADERS)/*.h 
+%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -f $(SRC)/*.o $(TARGET)
+	rm -f $(TARGET) $(OBJECTS)
