@@ -18,7 +18,7 @@ private:
 public:
     Civilization(const std::string& name, int population);
 
-    void tick(const Civilization& Civ);
+    void tick(Civilization& Civ);
     std::string getName(const Civilization& Civ);
     void setName(std::string name);
     int getPopulation(const Civilization& Civ);
