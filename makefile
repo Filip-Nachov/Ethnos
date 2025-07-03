@@ -9,7 +9,7 @@ TARGET = ethnos
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -o $(TARGET) $(SOURCES)
 
 %.o: %.cpp $(HEADERS)/*.h 
 	$(CC) $(CFLAGS) -c -o $@ $<
