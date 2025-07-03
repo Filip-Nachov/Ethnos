@@ -11,7 +11,10 @@ Civilization::Civilization(const std::string& name, int population)
 void Civilization::tick(Civilization& Civ) {
    if (Civ.time[0] != 60) Civ.time[0]++;
    else {
-       if (Civ.time[1] != 60) Civ.time[1]++;
+       if (Civ.time[1] != 60) { 
+           Civ.time[0] = 0;
+           Civ.time[1]++;
+        }
        else Civ.time[2]++;
    }
 }
